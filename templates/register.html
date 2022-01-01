@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
  {% block form %}   
-<div class="row container">
+<!-- <div class="row container">
     <form class="col s12">
       <div class="row">
         <div class="input-field col s6">
@@ -41,5 +41,30 @@
  
 
     </form>
+  </div>-->
+
+  <form class="form-horizontal", method="POST" >
+    <fieldset>
+      <legend>Flask-WTF Example</legend>
+      {{ form.csrf_token }}
+      {{ form.email, placeholder:'Email' }}
+      {{ form.password }}
+      {{ form.username }}
+      
+    <div class="form-group">
+      <div class="col-lg-10 col-lg-offset-2">
+        <button type="reset" class="btn btn-default">Cancel</button>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </div>
+    </div>
+    </fieldset>
+  </form>
+  
+  <div class="container theme-showcase" role="main">
+    <h1>Email: {{ email }}</h1>
+    <h1>Password: {{ password }}</h1>
+    <h1>Free Form: {{ freeform }}</h1>
+    <h1>Radios: {{ radios }}</h1>
+    <h1>Selects: {{ selects }}</h1>
   </div>
-{% endblock %}
+{% endblock %} 

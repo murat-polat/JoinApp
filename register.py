@@ -4,10 +4,10 @@ import json
 url = 'https://baretest.xyz/user_api/v1/account/registration/'
 
 data = {
-    "username": "murat62",
-    "email": "murat62@gmail.com",
-    "password": "Password123",
-    "name": "murat62",
+    "username": "",
+    "email": "",
+    "password": "",
+    "name": "",
     "terms_of_service": True
 }
  
