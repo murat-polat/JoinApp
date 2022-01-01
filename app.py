@@ -2,6 +2,9 @@ from flask import Flask, render_template
 from flask_restful import Api, Resource
 import requests
 import json
+from flask_wtf import FlaskForm
+from wtforms import StringField
+from wtforms.validators import DataRequired
 
 app = Flask(__name__)
 api = Api(app)
@@ -21,7 +24,14 @@ def login():
 
 @app.route('/register', methods=['GET','POST'])
 def register():
-    return render_template('register.html')
+    data = []
+
+    username = input('username')
+    email = input('email')
+    password = input('password')
+    name = input('name')
+    form_data = data.append(username,email,password,name)
+    return render_template('register.html', data)
     
 #@app.route('/register', method=['GET','POST'])
 print(reg_url)
