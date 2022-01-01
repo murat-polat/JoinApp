@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/materialize.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/custom.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/materialize.min.css')}}">
+    <script src="{{url_for('static', filename='js/materialize.min.js')}}"></script>
+    <script src="{{url_for('static', filename='js/materialize.js')}}"></script>
+    
+    <title>Join us!</title>
+</head>
+<body>
+    {% block navbar %}
+    <nav>
+        <div class="nav-wrapper" style="background-color: rgb(160, 216, 216);">
+          <a href="#!" class="brand-logo">YourLogo:)</a>
+          <ul class="right hide-on-med-and-down">
+            <li><a class="waves-effect waves-light btn-large" href="{{url_for('login')}} "><b>LOGIN</b></a></li>
+            <li><a class="waves-effect waves-light btn-large" href="{{url_for('register')}} "><b>REGISTER</b></a></li>
+          </ul>
+        </div>
+      </nav> 
+
+    {% endblock %}
+    
+    
+    {% block form %}
+    
+    
+  <div class="row">
+    <form class="col s6 justify-content-center">
+      <div class="row">
+        <div class="input-field col s6">
+          <input placeholder="Placeholder" id="first_name" type="text" class="validate">
+          <label for="first_name">First Name</label>
+        </div>
+        <div class="input-field col s6">
+          <input id="last_name" type="text" class="validate">
+          <label for="last_name">Last Name</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <input disabled value="I am not editable" id="disabled" type="text" class="validate">
+          <label for="disabled">Disabled</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="password" type="password" class="validate">
+          <label for="password">Password</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="email" type="email" class="validate">
+          <label for="email">Email</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col s12">
+          This is an inline input field:
+          <div class="input-field inline">
+            <input id="email_inline" type="email" class="validate">
+            <label for="email_inline">Email</label>
+            <span class="helper-text" data-error="wrong" data-success="right">Helper text</span>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  {% endblock %}
+
+ 
+</body>
+</html>

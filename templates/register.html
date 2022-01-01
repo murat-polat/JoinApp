@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+ {% block form %}   
+<div class="row container">
+    <form class="col s12">
+      <div class="row">
+        <div class="input-field col s6">
+          <input placeholder="Full name" id="name" type="text" class="validate">
+          <label for="name">Name</label>
+        </div>
+        <div class="input-field col s6">
+          <input id="username" type="text" class="validate">
+          <label for="username">Userame</label>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+              <input id="email" type="email" class="validate">
+              <label for="email">Email</label>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="input-field col s12">
+              <input id="password" type="password" class="validate">
+              <label for="password">Password</label>
+            </div>
+          </div>  
+          <div>
+              <div>
+            <a class="waves-effect waves-light btn left" id="btn"><i class="material-icons right"></i>CANCEL</a>
+
+              </div>
+              <div>
+            <a class="waves-effect waves-light btn right"><i class="material-icons right"></i>REGISTER</a>
+                
+              </div>
+
+          </div>     
+      </div>
+     
+ 
+
+    </form>
+  </div>
+{% endblock %}
