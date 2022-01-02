@@ -1,70 +1,43 @@
 {% extends 'base.html' %}
 
- {% block form %}   
-<!-- <div class="row container">
-    <form class="col s12">
-      <div class="row">
-        <div class="input-field col s6">
-          <input placeholder="Full name"  type="text" class="validate">
-          <label for="name">Name</label>
-        </div>
-        <div class="input-field col s6">
-          <input id="username" type="text" class="validate">
-          <label for="username">Userame</label>
-        </div>
-        <div class="row">
-            <div class="input-field col s12">
-              <input id="email" type="email" class="validate">
-              <label for="email">Email</label>
+{% block content %}
+
+    <div class="content-section">
+      <form  method="POST"  action="" >
+          {{ form.hidden_tag() }}
+         <fieldset class="form-group container">
+          <legend class="border-bottom mb-4">Register Form</legend>
+          
+            <div class="form-group">
+              {{form.username.label(class="form-control-label") }}
+              {{form.username(class="form-control ") }}
             </div>
-          </div>
-
-          <div class="row">
-            <div class="input-field col s12">
-              <input id="password" type="password" class="validate">
-              <label for="password">Password</label>
+            <div class="form-group">
+              {{form.email.label(class="form-control-label") }}
+              {{form.email(class="form-control ") }}
             </div>
-          </div>  
-          <div>
-              <div>
-            <a class="waves-effect waves-light btn left" id="btn"><i class="material-icons right"></i>CANCEL</a>
+            <div class="form-group"> 
+              {{form.password.label(class="form-control-label") }}
+              {{form.password(class="form-control ") }}
+            </div>
+            <div class="form-group">
+              {{form.name.label(class="form-control-label") }}
+              {{form.name(class="form-control ") }}
+            </div>
+             <div class="form-group">
+              {{ form.terms_of_service(class="form-check")}}
+              {{form.terms_of_service.label(class="form-control-label") }}
+               
+             </div> 
 
-              </div>
-              <div>
-            <a class="waves-effect waves-light btn right"><i class="material-icons right"></i>REGISTER</a>
-                
-              </div>
-
-          </div>     
+            <br>
+            <div class="form-group"> 
+              {{form.submit(class="btn btn-outline-info") }} 
+                       
+            </div>            
+               
+          
+        </fieldset>
+        </form>
       </div>
-     
- 
-
-    </form>
-  </div>-->
-
-  <form class="form-horizontal", method="POST" >
-    <fieldset>
-      <legend>Flask-WTF Example</legend>
-      {{ form.csrf_token }}
-      {{ form.email, placeholder:'Email' }}
-      {{ form.password }}
-      {{ form.username }}
-      
-    <div class="form-group">
-      <div class="col-lg-10 col-lg-offset-2">
-        <button type="reset" class="btn btn-default">Cancel</button>
-        <button type="submit" class="btn btn-primary">Submit</button>
-      </div>
-    </div>
-    </fieldset>
-  </form>
-  
-  <div class="container theme-showcase" role="main">
-    <h1>Email: {{ email }}</h1>
-    <h1>Password: {{ password }}</h1>
-    <h1>Free Form: {{ freeform }}</h1>
-    <h1>Radios: {{ radios }}</h1>
-    <h1>Selects: {{ selects }}</h1>
-  </div>
-{% endblock %} 
+{% endblock content %}

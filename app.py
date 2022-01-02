@@ -3,48 +3,56 @@ from flask_restful import Api, Resource
 import requests
 import json
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, TextAreaField, SelectField, RadioField
-from wtforms.validators import InputRequired
+from wtforms import StringField, PasswordField, SubmitField, BooleanField,TextAreaField, SelectField, RadioField
+from wtforms.validators import InputRequired,DataRequired
 
 
 app = Flask(__name__)
 api = Api(app)
-app.config['SECRET_KEY']= "HEMMELIG"
+app.config['SECRET_KEY']= "VeryVerySecret!"
 
-
+## Here the API's section (base_url) below, must be changed to your domain(LMS_HOST) ##
 base_url = 'https://baretest.xyz'
 reg_url = base_url + '/user_api/v1/account/registration/'
 login_url = base_url +'/api/user/v1/account/login_session'
 dashboard_url = base_url + '/dashboard'
 
-class MyForm(FlaskForm):
-    username = StringField('Username')
-    email = StringField('Email', validators=[InputRequired()])
-    password = PasswordField('Password', validators=[InputRequired()])
-    name = StringField("Name")
-    #selects = SelectField('Select', choices=[('first', 'First'), ('second', 'Second'), ('third', 'Third')])
-    #radios = RadioField('Radios', default='option1', choices=[('option1', 'Option1'), ('option2', 'Option2 ')])  
+class RegisterForm(FlaskForm):
+    username = StringField('Username',validators=[DataRequired()])
+    email = StringField('Email', validators=[DataRequired()])
+    password = PasswordField('Password', validators=[DataRequired()])
+    name = StringField("Name", validators=[DataRequired()])
+    terms_of_service = BooleanField("I accept terms of condition", validators=[DataRequired()])
+    submit = SubmitField('Sign Up') 
+
+
+class LoginForm(FlaskForm):
+    email = StringField('Email', validators=[DataRequired()])
+    password = PasswordField('Password', validators=[DataRequired()])
+    submit = SubmitField('Login') 
+
+
 
 @app.route('/login',methods=['GET','POST'])
 def login():
-    return render_template('login.html')
+    form = LoginForm()
+    return render_template('login.html', title='Login', form=form)
+
+
+
 
 @app.route('/register', methods=['GET','POST'])
 def register():
-    form = MyForm()
-    if form.validate_on_submit():
-        results = {
-            'username' : form.username.data,
-            'email' : form.email.data,
-            'password' : form.password.data,
-            'name' : form.name.data,
-            
-        }
-        return render_template('results.html', **results)
-    return render_template('register.html', form=form)
-print(reg_url)
-print(login_url)
-print(dashboard_url)
+    form = RegisterForm()
+    
+    # username = form['username']
+    # email = form['email']
+    # password = form['password']
+    # name = form['name']
+
+        
+    return render_template('register.html', title='Register', form=form)
+
 
 
 
