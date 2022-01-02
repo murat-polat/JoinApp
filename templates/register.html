@@ -4,7 +4,7 @@
 
     <div class="content-section">
       <form  method="POST"  action="" >
-          {{ form.hidden_tag() }}
+          
          <fieldset class="form-group container">
           <legend class="border-bottom mb-4">Register Form</legend>
           
@@ -35,7 +35,11 @@
               {{form.submit(class="btn btn-outline-info") }} 
                        
             </div>            
-               
+               <div> {{form.username.data}} </div>
+               <div> {{form.email.data}} </div>
+               <div> {{form.password.data}} </div>
+               <div> {{form.name.data}} </div>
+               <div> {{form.terms_of_service.data}} </div>
           
         </fieldset>
         </form>
