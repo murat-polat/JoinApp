@@ -1,4 +1,5 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, flash, redirect
+from flask.helpers import url_for
 from flask_restful import Api, Resource
 import requests
 import json
@@ -17,6 +18,7 @@ reg_url = base_url + '/user_api/v1/account/registration/'
 login_url = base_url +'/api/user/v1/account/login_session'
 dashboard_url = base_url + '/dashboard'
 
+## Forms Section ##
 class RegisterForm(FlaskForm):
     username = StringField('Username',validators=[DataRequired()])
     email = StringField('Email', validators=[DataRequired()])
@@ -31,6 +33,11 @@ class LoginForm(FlaskForm):
     password = PasswordField('Password', validators=[DataRequired()])
     submit = SubmitField('Login') 
 
+## Route and view section ##
+
+@app.route('/')
+def index():
+    return render_template('index.html')
 
 
 @app.route('/login',methods=['GET','POST'])
@@ -44,11 +51,10 @@ def login():
 @app.route('/register', methods=['GET','POST'])
 def register():
     form = RegisterForm()
-    
-    # username = form['username']
-    # email = form['email']
-    # password = form['password']
-    # name = form['name']
+    if form.validate_on_submit():
+        flash(f'Account created for {form.username.data} !', 'success')
+        return redirect(url_for('index'))
+  
 
         
     return render_template('register.html', title='Register', form=form)
