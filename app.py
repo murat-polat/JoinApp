@@ -103,7 +103,7 @@ def register():
 
 @app.route('/login',methods=['GET','POST'])
 def login():
-    form = LoginForm()
+    form = RegisterForm()
     data = {
         "email": form.email.data,
         "password": form.password.data
