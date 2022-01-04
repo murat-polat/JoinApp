@@ -57,14 +57,6 @@ class LoginForm(FlaskForm):
 ## Route and view section ##
 
 
-@app.route('/login',methods=['GET','POST'])
-def login():
-    form = LoginForm()
-    return render_template('login.html', title='Login', form=form)
-
-
-
-
 @app.route('/register', methods=['GET','POST'])
 def register():
     form = RegisterForm()    
@@ -85,8 +77,13 @@ def index():
         }
     requests.post(reg_url,data, my_headers)
     return render_template('index.html',form=form)  
-   
-    
+
+
+@app.route('/login',methods=['GET','POST'])
+def login():
+    form = LoginForm()
+    return render_template('login.html', title='Login', form=form)
+
        
     
 
