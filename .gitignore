@@ -10,3 +10,5 @@ env.bak/
 venv.bak/
 *.__pycache__
 __pycache__
+register.py 
+depo.py 

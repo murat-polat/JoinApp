@@ -1,6 +1,6 @@
 form {
     max-width: 420px;
-    margin: 30px auto;
+    margin: 160px auto;
     background: white;
     text-align: left;
     padding: 40px;
@@ -8,4 +8,8 @@ form {
 }
 #btn {
     background-color: grey;
+}
+
+body {
+    background-image: url('/static/img/beis.jpg');
 }

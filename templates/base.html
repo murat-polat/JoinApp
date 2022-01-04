@@ -19,18 +19,7 @@
     <title>Join us!</title>
 </head>
 <body>
-    <!-- {% block navbar %}
-    <nav>
-        <div class="nav-wrapper" style="background-color: rgb(160, 216, 216);">
-          <a href="#!" class="brand-logo">YourLogo:)</a>
-          <ul class="right hide-on-med-and-down">
-            <li><a class="waves-effect waves-light btn-large" href="{{url_for('login')}} "><b>LOGIN</b></a></li>
-            <li><a class="waves-effect waves-light btn-large" href="{{url_for('register')}} "><b>REGISTER</b></a></li>
-          </ul>
-        </div>
-      </nav> 
-
-    {% endblock navbar%} -->
+ 
     {% with messages = get_flashed_messages(with_categories=true) %}
       {% if messages %}
         {% for category, message in messages %}
