@@ -67,23 +67,24 @@ class LoginForm(FlaskForm):
 
 
      
+     
         
-@app.route('/', methods=['GET','POST'])
-def index():
-    form = RegisterForm()
-    # if form.validate_on_submit():
-    #     flash(f'Account created for {form.username.data} !', 'success')
-    data = {
-        "username": form.username.data,
-        "email": form.email.data,
-        "password": form.password.data,
-        "name": form.name.data,
-        "terms_of_service":form.terms_of_service.data
-        }
-    requests.post(reg_url,data, my_headers)
+# @app.route('/', methods=['GET','POST'])
+# def index():
+#     # form = RegisterForm()
+#     # # if form.validate_on_submit():
+#     # #     flash(f'Account created for {form.username.data} !', 'success')
+#     # data = {
+#     #     "username": form.username.data,
+#     #     "email": form.email.data,
+#     #     "password": form.password.data,
+#     #     "name": form.name.data,
+#     #     "terms_of_service":form.terms_of_service.data
+#     #     }
+#     # requests.post(reg_url,data, my_headers)
       
 
-    return render_template('index.html',form=form)  
+#     return render_template('index.html')  
 
 
 @app.route('/register', methods=['GET','POST'])
@@ -96,21 +97,28 @@ def register():
         "name": form.name.data,
         "terms_of_service":form.terms_of_service.data
     }
-    requests.post(reg_url,data, my_headers)
+    
     if form.validate_on_submit():
-        return redirect (dashboard_url, form=form)    
+        # s =[]
+        # s.append(form.data.values)
+        requests.post(reg_url,data, my_headers)
+        # print(requests.status_codes) 
+        # print(s)
+        return redirect (dashboard_url)
+           
     return render_template('register.html', title='Register', form=form)
 
 @app.route('/login',methods=['GET','POST'])
 def login():
-    form = RegisterForm()
+    form = LoginForm()
     data = {
         "email": form.email.data,
         "password": form.password.data
     }
-    requests.post(login_url,data, my_headers)
     if form.validate_on_submit():
-        return redirect (dashboard_url)
+        if form.email.data == form.email.data and form.password.data == form.password.data:
+            requests.post(login_url,data, my_headers)
+        return redirect(dashboard_url)
     return render_template('login.html', title='Login', form=form)
 
        

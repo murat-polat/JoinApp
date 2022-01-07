@@ -5,7 +5,7 @@
 
     <div class="content-section">
       <form  method="POST"  action="" >
-          
+          {{csrf_token}}
          <fieldset class="form-group container">
           <legend class="border-bottom mb-4">Register Form</legend>
           
@@ -37,6 +37,7 @@
                        
             </div>            
             
+            <div>{{form.data}}</div>
           
         </fieldset>
         </form>
