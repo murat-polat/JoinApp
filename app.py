@@ -16,9 +16,9 @@ app.config['SECRET_KEY']= "VeryVerySecret!"
 
 
 
-reg_url = 'https://baretest.xyz/user_api/v1/account/registration/'
-login_url = 'https://baretest.xyz/api/user/v1/account/login_session'
-dashboard_url = 'https://baretest.xyz/dashboard'
+reg_url = 'https://revelmyra.net/user_api/v1/account/registration/'
+login_url = 'https://revelmyra.net/api/user/v1/account/login_session'
+dashboard_url = 'https://revelmyra.net/dashboard'
 my_headers={'Content-Type': 'application/x-www-form-urlencoded'}
 
 
